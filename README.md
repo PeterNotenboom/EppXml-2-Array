@@ -21,7 +21,25 @@ For example, if your EPP had:
 ```
 It will remove "type". And for EPP any missing information makes this unusable.
 
+
+
 ##### It has no good error handling (yet), so you might have to edit this class to your own needs.
+
+
+How to use
+----
+##### Get the whole array from your complete EPP string:
+```php
+print_r( Xml2Array::getArray($xml_string) );
+```
+##### Get all the Namespace prefix + URI's as array:
+```php
+print_r( Xml2Array::getNamespaces($xml_string) );
+```
+##### Get a part of the EPP in array by giving the prefix:
+```php
+print_r( Xml2Array::getArrayNS($xml_string, 'contact') );
+```
 
 
 License
