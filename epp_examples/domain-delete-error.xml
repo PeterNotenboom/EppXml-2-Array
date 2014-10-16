@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0" xmlns:sidn-ext-epp="http://rxsd.domain-registry.nl/sidn-ext-epp-1.0">
+  <response>
+     <result code="2304">
+        <msg>This transaction is incompatible with the domain name’s current status.</msg>
+     </result>
+     <extension>
+       <sidn-ext-epp:ext>
+        <sidn-ext-epp:response>
+          <sidn-ext-epp:msg field="" code="C0001b">Transactie in combinatie met huidige status van de domeinnaam is niet toegestaan.</sidn-ext-epp:msg>
+         </sidn-ext-epp:response>
+       </sidn-ext-epp:ext>
+     </extension>
+     <trID>
+       <clTRID>TestVWDNC10T30</clTRID>
+       <svTRID>100045</svTRID>
+     </trID>
+  </response>
+</epp>

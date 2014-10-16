@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+  <response>
+    <result code="1000">
+      <msg>Command completed successfully</msg>
+    </result>
+    <resData>
+      <domain:infData xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        <domain:name>testing.com</domain:name>
+        <domain:roid>123456789065436_DOMAIN-SYSTEM</domain:roid>
+        <domain:status s="ok"/>
+        <domain:registrant>P-ABC123</domain:registrant>
+        <domain:contact type="admin">P-ABC123</domain:contact>
+        <domain:contact type="tech">P-ABC123</domain:contact>
+        <domain:contact type="billing">P-ABC123</domain:contact>
+        <domain:ns>
+          <domain:hostObj>NS1.NAMESERVER.COM</domain:hostObj>
+          <domain:hostObj>NS2.NAMESERVER.NL</domain:hostObj>
+          <domain:hostObj>NS3.NAMESERVER.BE</domain:hostObj>
+        </domain:ns>
+        <domain:clID>accountname</domain:clID>
+        <domain:crID>accountname</domain:crID>
+        <domain:crDate>2000-01-01T08:00:00.0Z</domain:crDate>
+        <domain:upID>accountname</domain:upID>
+        <domain:upDate>2014-10-16T08:00:00.0Z</domain:upDate>
+        <domain:exDate>2025-10-16T08:00:00.0Z</domain:exDate>
+        <domain:authInfo>
+          <domain:pw>5Kxyz2;@Y1U</domain:pw>
+        </domain:authInfo>
+      </domain:infData>
+    </resData>
+    <extension>
+      <keysys:resData xmlns:keysys="http://www.key-systems.net/epp/keysys-1.0">
+        <keysys:infData>
+          <keysys:renDate>2016-10-06T19:00:00.0Z</keysys:renDate>
+          <keysys:domain-roid>1234567890_DOMAIN_COM-VRSN</keysys:domain-roid>
+          <keysys:renewalmode>DEFAULT</keysys:renewalmode>
+          <keysys:transferlock>0</keysys:transferlock>
+          <keysys:transfermode>DEFAULT</keysys:transfermode>
+        </keysys:infData>
+      </keysys:resData>
+      <secDNS:infData xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.1">
+        <secDNS:keyData>
+          <secDNS:flags>257</secDNS:flags>
+          <secDNS:protocol>3</secDNS:protocol>
+          <secDNS:alg>8</secDNS:alg>
+          <secDNS:pubKey>AwEAAa8EJ5cJgMgk7T6a1Cfd39ln5cG1f1RLlA7Ukav9uqJT39U3i0jnllmwDkDcp999pnjCroRmesoFPYSlCs0dAePiIdLT69FCBLHjVHyH2G8meaqnC3bsBfQO/FrbVJqA/kAWImsDtkmPWN+NP3M0tGPtdfT11GSt4a3Pkjgw6eRi1/yJ3OUI2VBEoCohTIjYaATx1uCcyeUsjU7gKpu1UVyBo+spcEHuQ3MgE3gYJ3wAqfMTYc+zBObeBmhJepw6P+EDOepxnHdzUGH+ow/o5q2RSYI5kptM6i1hefsSQpVXCevmPOjT50/jftriQrgbbX9AeewuqB+bb78t0+c7uus=</secDNS:pubKey>
+        </secDNS:keyData>
+      </secDNS:infData>
+    </extension>
+    <trID>
+      <clTRID>EXPL-trans-id-1413308578-49329</clTRID>
+      <svTRID>b1f636ec-c6f7-41cc-be5e-8bb07c6266ec</svTRID>
+    </trID>
+  </response>
+</epp>
