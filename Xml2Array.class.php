@@ -7,7 +7,7 @@
  * Still usable for normal XML too. CDATA and such may not work, not tested.
  * Also, there's hardly any (good) error handling so be careful of that. Mainly because of 'no DTD' errors (wont validate)
  * @author Peter Notenboom <peter@petern.nl>
- * @version 1.0
+ * @version 1.1
  * @package Xml2Array
  */
 
@@ -19,27 +19,57 @@
 class Xml2Array {
 
 	/**
-	  * Return whole Array by giving a complete XML $xml_raw string
+	 * xml in raw string
+	 * @access private
+	 * @var string
+	 * @see loadXML()
+	 */
+	private static $xml_raw;
+
+	/**
+	 * xml in DOM Object
+	 * @access private
+	 * @var object
+	 * @see loadXML()
+	 */
+	private static $xml;
+
+	/**
+	  * Loads the XML in raw string + DOM object. Should return true/false if it's an OK xml or not..
 	  * @param string $xml_raw
+	  * @return boolean
+	  */
+	public static function loadXML($xml_raw) {
+		libxml_use_internal_errors(TRUE);
+		self::$xml_raw = $xml_raw;
+		self::$xml = new DOMDocument('1.0', 'utf-8');
+		self::$xml->loadXML($xml_raw);
+
+		if(self::$xml) {
+			//double check
+			//if (self::$xml->validate()) { //Warning: DOMDocument::validate(): no DTD found!
+			return simplexml_load_string($xml_raw);
+		}
+	}
+
+	/**
+	  * Return whole Array by giving a complete XML $xml_raw string
 	  * @return array
 	  */
-	public static function getArray($xml_raw = '') {
-		libxml_use_internal_errors(TRUE);
-		$xml = new DOMDocument('1.0', 'utf-8');
-		$xml->loadXML($xml_raw);
-		//if ($xml->validate()) { //Warning: DOMDocument::validate(): no DTD found!
-		return self::processArray($xml);
+	public static function getArray() {
+		if(self::$xml) {
+			return self::processArray(self::$xml);
+		}
 	}
 
 	/**
 	  * Return all namespaces in an Array, might be useful somehow
 	  * Key = prefix, value = uri
-	  * @param string $xml_raw
 	  * @return array
 	  */
-	public static function getNamespaces($xml_raw) {
+	public static function getNamespaces() {
 		libxml_use_internal_errors(true);
-		$xml = simplexml_load_string($xml_raw);
+		$xml = simplexml_load_string(self::$xml_raw);
 		if($xml) {
 			return $xml->getNameSpaces(true);
 		}
@@ -53,24 +83,19 @@ class Xml2Array {
 	/**
 	  * Return only the partial namespace/prefix array of the XML. Call getNamespaces() to see which namespaces there are.
 	  * Returns an empty array if there's nothing found.
-	  * @param string $xml_raw
 	  * @param string $namespace
 	  * @return array
 	  */
-	public static function getArrayNS($xml_raw, $namespace) {
+	public static function getArrayNS($namespace) {
 		libxml_use_internal_errors(true);
 		$result = array();
 
-		$namespaceURIS = self::getNamespaces($xml_raw);
+		$namespaceURIS = self::getNamespaces(self::$xml_raw);
 		if(isset($namespaceURIS[$namespace])) {
-
-			$xml = new DOMDocument('1.0', 'utf-8');
-			$xml->loadXML($xml_raw);
-			//if ($xml->validate()) { //Warning: DOMDocument::validate(): no DTD found!
-			$namespaces = $xml->getElementsByTagNameNS( $namespaceURIS[$namespace] , '*');
+			$namespaces = self::$xml->getElementsByTagNameNS( $namespaceURIS[$namespace] , '*');
 			if($namespaces->length > 0) {
 				//Todo: foreach is kinda overkill. But EPP isn't that large. (added a break for now)
-				foreach ($xml->getElementsByTagNameNS( $namespaceURIS[$namespace] , '*') as $element) {
+				foreach ($namespaces as $element) {
 					$elements[] = self::processArray($element);
 					break;
 				}
@@ -79,7 +104,34 @@ class Xml2Array {
 			return $result;
 		}
 		else {
-			return array();
+			return $result;
+		}
+	}
+
+	/**
+	  * Return only the tags that match given at $xml_tag_name inside the namespace. Call getNamespaces() to see which namespaces there are.
+	  * Returns an empty array if there's nothing found.
+	  * @param string $namespace
+	  * @param string $xml_tag_name
+	  * @param boolean $one_result use this is you're already sure you only get 1 key (or want the first one)
+	  * @return array
+	  */
+	public static function getArrayElement($namespace, $xml_tag_name, $one_result = false) {
+		libxml_use_internal_errors(true);
+		$result = array();
+
+		$namespaceURIS = self::getNamespaces();
+		if(isset($namespaceURIS[$namespace])) {
+			$namespaces = self::$xml->getElementsByTagNameNS( $namespaceURIS[$namespace] , $xml_tag_name);
+			if($namespaces->length > 0) {
+				foreach ($namespaces as $element) {
+					$result[] = self::processArray($element);
+				}
+			}
+			return $one_result ? $result[0] : $result;
+		}
+		else {
+			return $result;
 		}
 	}
 
