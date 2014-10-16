@@ -73,7 +73,7 @@ class Xml2Array {
 	}
 
 	/**
-	  *	Processes the xml DOM, nodes and namespaces and turns it into an array.
+	  * Processes the xml DOM, nodes and namespaces and turns it into an array.
 	  * Largely based on: http://php.net/manual/en/book.dom.php#93717
 	  * @param object $root DOMDocument
 	  * @return array
