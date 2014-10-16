@@ -19,28 +19,26 @@ For example, if your EPP had:
 ```xml
 <domain:contact type="billing">P-ABC120</domain:contact>
 ```
-It will remove "type". And for EPP any missing information makes this unusable.
-
-
-
-##### It has no good error handling (yet), so you might have to edit this class to your own needs.
+It will remove "type". And for EPP any missing information makes those methods unusable.
 
 
 How to use
 ----
-##### Get the whole array from your complete EPP string:
+##### It has no good error handling (yet), so you might have to edit this class to your own needs.
+
+Get the whole array from your complete EPP string:
 ```php
 print_r( Xml2Array::getArray($xml_string) );
 ```
-##### Get all the Namespace prefix + URI's as array:
+Get all the Namespace prefixes + URI's as an array:
 ```php
 print_r( Xml2Array::getNamespaces($xml_string) );
 ```
-##### Get a part of the EPP in array by giving the prefix:
+Get a part of the EPP in array by giving the prefix:
 ```php
 print_r( Xml2Array::getArrayNS($xml_string, 'contact') );
 ```
-
+Simple as that.
 
 License
 ----
