@@ -4,10 +4,10 @@
  * Epp2Array, EPP/XML to a simple readable (usable) array
  *
  * An EPP (http://en.wikipedia.org/wiki/Extensible_Provisioning_Protocol), with Namespace support, to a simple Array
- * Still usable for normal XML too. CDATA and such may not work, not tested.
+ * Still usable for normal XML too. CDATA is supported.
  * Also, there's hardly any (good) error handling so be careful of that. Mainly because of 'no DTD' errors (wont validate)
  * @author Peter Notenboom <peter@petern.nl>
- * @version 1.1
+ * @version 1.2
  * @package Xml2Array
  */
 
@@ -162,6 +162,9 @@ class Xml2Array {
 					else {
 						return $result;
 					}
+				}
+				elseif($child->nodeType == XML_CDATA_SECTION_NODE) {
+					return $child->nodeValue;
 				}
 			}
 			$groups = array();

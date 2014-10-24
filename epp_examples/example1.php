@@ -2,7 +2,7 @@
 
 require_once('Xml2Array.class.php');
 
-$xml_string = file_get_contents('epp_examples/domain-info.xml');
+$xml_string = file_get_contents('xml/domain-info.xml');
 
 Xml2Array::loadXML($xml_string);
 

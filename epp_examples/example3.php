@@ -3,7 +3,7 @@
 require_once('Xml2Array.class.php');
 
 // Check an invalid XML
-$xml_string = file_get_contents('epp_examples/invalid.xml');
+$xml_string = file_get_contents('xml/invalid.xml');
 
 if( Xml2Array::loadXML($xml_string) ) {
 	echo "Xml file loaded.\n";

@@ -1,8 +1,8 @@
-EppXml-2-Array v1.1
+EppXml-2-Array v1.2
 ===================
 
 An EPP (http://en.wikipedia.org/wiki/Extensible_Provisioning_Protocol), with Namespace support, to a simple Array.
-Still usable for normal XML too. CDATA and such may not work, not tested.
+Still usable for normal XML too. CDATA is supported.
 
 Why not use xyz?
 ----
