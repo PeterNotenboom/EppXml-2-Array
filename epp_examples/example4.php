@@ -2,7 +2,7 @@
 
 //Checking if CDATA works.
 
-require_once('Xml2Array.class.php');
+require_once('../Xml2Array.class.php');
 
 $xml_string = file_get_contents('xml/cdata-test.xml');
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once('Xml2Array.class.php');
+require_once('../Xml2Array.class.php');
 
 // Check an invalid XML
 $xml_string = file_get_contents('xml/invalid.xml');
