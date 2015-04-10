@@ -52,7 +52,10 @@ print_r( Xml2Array::getArrayElement('domain', 'pw', true ) );
 ```
 
 ##### Added in v1.3
-Want to get an attribute? <result code="1000">...
+Want to get an attribute like:
+```xml
+<result code="1000">...
+```
 See example1.php, use it like this:
 ```php
 print_r( Xml2Array::getArrayAttribute(null, 'result', 'code', true) );
