@@ -1,4 +1,4 @@
-EppXml-2-Array v1.2
+EppXml-2-Array v1.3
 ===================
 
 An EPP (http://en.wikipedia.org/wiki/Extensible_Provisioning_Protocol), with Namespace support, to a simple Array.
@@ -50,6 +50,14 @@ See example1.php, use it like this:
 ```php
 print_r( Xml2Array::getArrayElement('domain', 'pw', true ) );
 ```
+
+##### Added in v1.3
+Want to get an attribute? <result code="1000">...
+See example1.php, use it like this:
+```php
+print_r( Xml2Array::getArrayAttribute(null, 'result', 'code', true) );
+```
+
 Simple as that.
 
 License
