@@ -7,7 +7,7 @@
  * Still usable for normal XML too. CDATA is supported.
  * Also, there's hardly any (good) error handling so be careful of that. Mainly because of 'no DTD' errors (wont validate)
  * @author Peter Notenboom <peter@petern.nl>
- * @version 1.2
+ * @version 1.3
  * @package Xml2Array
  */
 
@@ -129,6 +129,33 @@ class Xml2Array {
 				}
 			}
 			return $one_result ? $result[0] : $result;
+		}
+		else {
+			return $result;
+		}
+	}
+
+	/**
+	  * Return only the attribute values that match given at $xml_tag_name inside the namespace. Call getNamespaces() to see which namespaces there are.
+	  * Returns an empty array if there's nothing found.
+	  * @param string $namespace
+	  * @param string $xml_tag_name
+	  * @param string $attribute_name
+	  * @param boolean $one_result use this is you're already sure you only get 1 key (or want the first one)
+	  * @return array
+	  */
+	public static function getArrayAttribute($namespace, $xml_tag_name, $attribute_name, $one_result = false) {
+		$result = array();
+
+		$namespaceURIS = self::getNamespaces();
+		if(isset($namespaceURIS[$namespace])) {
+			$namespaces = self::$xml->getElementsByTagNameNS( $namespaceURIS[$namespace] , $xml_tag_name );
+			if($namespaces->length > 0) {
+				foreach ($namespaces as $element) {
+					$result[] = $element->attributes -> getNamedItem( $attribute_name ) -> value;
+				}
+				return $one_result ? $result[0] : $result;
+			}
 		}
 		else {
 			return $result;
