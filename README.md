@@ -60,7 +60,7 @@ See example1.php, use it like this:
 print_r( Xml2Array::getArrayAttribute(null, 'result', 'code', true) );
 ```
 
-Simple as that.
+Simple as that. PN.
 
 License
 ----
