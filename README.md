@@ -60,7 +60,6 @@ See example1.php, use it like this:
 ```php
 print_r( Xml2Array::getArrayAttribute(null, 'result', 'code', true) );
 ```
-
 Simple as that.
 
 License
