@@ -21,6 +21,7 @@ For example, if your EPP had:
 ```
 It will remove the "type" attribute. And for EPP any missing information makes those methods unusable.
 
+
 How to use
 ----
 Notice: Error handling isn't perfect (yet). Valid EPP isn't valid XML somehow ('no DTD found' errors with DOMDocument::validate() ) See example3.php for all the bits of error handling it has. Also, I'm not 100% sure simplexml_load_string() validates the complete XML.
@@ -60,7 +61,7 @@ See example1.php, use it like this:
 print_r( Xml2Array::getArrayAttribute(null, 'result', 'code', true) );
 ```
 
-Simple as that. Verbeterd door Jovana
+Simple as that.
 
 License
 ----
