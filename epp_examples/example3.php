@@ -1,6 +1,8 @@
 <?php
 
-require_once('../Xml2Array.class.php');
+Use Pn\Xml2Array;
+
+require_once('../src/Xml2Array.class.php');
 
 // Check an invalid XML
 $xml_string = file_get_contents('xml/invalid.xml');
@@ -34,6 +36,5 @@ if($is_valid_xml) {
 else {
 	echo "No, not valid XML\n";
 }
-
 
 ?>

@@ -1,6 +1,8 @@
 <?php
 
-require_once('../Xml2Array.class.php');
+Use Pn\Xml2Array;
+
+require_once('../src/Xml2Array.class.php');
 
 $xml_string = file_get_contents('xml/domain-delete-error.xml');
 
