@@ -11,7 +11,7 @@
     "authors": [
         {
             "name": "Peter Notenboom",
-            "email": "peter at petern.nl"
+            "homepage": "https://github.com/PeterNotenboom/"
         }
     ],
     "autoload": {
