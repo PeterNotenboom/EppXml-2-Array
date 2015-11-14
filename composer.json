@@ -1,5 +1,5 @@
 {
-    "name": "PN/Xml2Array",
+    "name": "pn/epp-xml2array",
     "description": "XML/EPP to a simple readable array, including Namespace and CDATA support",
     "keywords": [
         "EPP",
