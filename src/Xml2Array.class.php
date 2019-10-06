@@ -199,7 +199,7 @@ class Xml2Array
                 if (!isset($result[$child->nodeName])) {
                     $childNode = self::processArray($child);
                     //Needs to return atleast 1 result
-                    if (count($childNode) >= 1) {
+                    if (!empty($childNode)) {
                         $result[$child->nodeName] = $childNode;
                     }
                 } else {
@@ -209,7 +209,7 @@ class Xml2Array
                     }
                     $childNode = self::processArray($child);
                     //Needs to return atleast 1 result
-                    if (count($childNode) >= 1) {
+                    if (!empty($childNode)) {
                         $result[$child->nodeName][] = $childNode;
                     }
                 }
